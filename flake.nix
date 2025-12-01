@@ -21,83 +21,90 @@
   };
 
   outputs = { self, nixpkgs, flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } rec {
-      flake.hostSystem = "x86_64-linux";
-      flake.buildSystem = "riscv64-linux";
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { config, ... }: {
+        hostSystem = "riscv64-linux";
+        buildSystem = "x86_64-linux";
 
-      imports = with inputs; [
-        shared.flakeModule
+        # systems = [ "x86_64-linux" ];
 
-        # applications.flakeModule
-        # boot.flakeModule
-        # dist.flakeModule
-        # hardware.flakeModule
-        kernel.flakeModule
-        network.flakeModule
-        nixos.flakeModule
-        # peripherals.flakeModule
-        # services.flakeModule
-        #
-        # profiles.flakeModule
-      ];
+        imports = with inputs; [
+          shared.flakeModule
 
-      # systems = [ "x86_64-linux" ];
-
-      # flake.hostSystem = hostSystem;
-      # flake.buildSystem = buildSystem;
-
-      flake.nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        # nixpkgs = { inherit (self) hostSystem; };
-        system = self.hostSystem;
-
-        modules = with self.nixosModules; [
-          # applications
-          # boot
-          # dist
-          # hardware
-          # kernel
-          # network
-          # nixos
-          # peripherals
-          # services
+          # applications.flakeModule
+          boot.flakeModule
+          dist.flakeModule
+          # hardware.flakeModule
+          kernel.flakeModule
+          network.flakeModule
+          nixos.flakeModule
+          # peripherals.flakeModule
+          # services.flakeModule
           #
-          # profiles
+          # profiles.flakeModule
         ];
-      };
 
-      perSystem = { self', inputs', system, pkgs, lib, ... }: {
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            disko
-          ];
+        flake.nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+          system = null;
 
-          buildInputs = with pkgs; [
-            gcc
-            binutils
-            dtc
-            swig
-            (python3.withPackages (p: with p; [ libfdt setuptools ]))
-            pkg-config
-            ncurses
-            nettools
-            bc
-            bison
-            flex
-            perl
-            rsync
-            gmp
-            libmpc
-            mpfr
-            openssl
-            libelf
-            cpio
-            elfutils
-            zstd
-            gawk
-            zlib
-            pahole
+          # installer.cloneConfig = true;
+
+          modules = with self.nixosModules; [
+            { nixpkgs.hostPlatform = nixpkgs.lib.mkDefault config.buildSystem; }
+            { nixpkgs.hostPlatform = config.hostSystem; }
+
+            boot
+            dist
+
+            # applications
+            # hardware
+            # kernel
+            # network
+            # nixos
+            # peripherals
+            # services
+            #
+            # profiles
           ];
         };
-      };
-    };
+
+        perSystem = { self', inputs', system, pkgs, lib, ... }: {
+          devShells.default = pkgs.mkShell {
+            packages = with pkgs; [
+              disko
+            ];
+
+            buildInputs = with pkgs; [
+              gcc
+              binutils
+              dtc
+              swig
+              (python3.withPackages (p: with p; [
+                libfdt
+                setuptools
+              ]))
+              pkg-config
+              ncurses
+              nettools
+              bc
+              bison
+              flex
+              perl
+              rsync
+              gmp
+              libmpc
+              mpfr
+              openssl
+              libelf
+              cpio
+              elfutils
+              zstd
+              gawk
+              zlib
+              pahole
+            ];
+          };
+        };
+      }
+    );
 }

@@ -10,9 +10,6 @@
 
     rtl8723ds.url = ./rtl8723ds.nix;
     rtl8723ds.flake = false;
-
-    overlay.url = ./overlay.nix;
-    overlay.flake = false;
   };
 
   outputs = { self, flake-parts, nixpkgs, ... }@inputs:
@@ -23,14 +20,12 @@
           inherit (lib) types mkOption;
         in {
           options = {
-            flake = {
-              hostSystem = mkOption {
-                type = config.types.systemsEnum;
-              };
+            hostSystem = mkOption {
+              type = config.types.systemsEnum;
+            };
 
-              buildSystem = mkOption {
-                type = config.types.systemsEnum;
-              };
+            buildSystem = mkOption {
+              type = config.types.systemsEnum;
             };
 
             overlays = mkOption {
@@ -47,7 +42,11 @@
           config = {
             subflakes.nixos = self;
 
-            systems = [ config.flake.hostSystem config.flake.buildSystem ];
+            systems =
+              lib.lists.unique [
+                config.hostSystem
+                config.buildSystem
+              ];
 
             overlays = [
               inputs.overlay

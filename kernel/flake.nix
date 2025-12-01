@@ -7,8 +7,8 @@
     linux.url = ./linux.nix;
     linux.flake = false;
 
-    kconfig.url = ./config.nezha;
-    kconfig.flake = false;
+    kernelConfig.url = ./config.nezha;
+    kernelConfig.flake = false;
   };
 
   outputs = { self, flake-parts, shared, ... }@inputs:
@@ -20,7 +20,11 @@
 
           overlays = [
             (self: super: rec {
-              linux_nezha = super.callPackage inputs.linux { };
+              linux_nezha = super.callPackage inputs.linux {
+                inherit (inputs) kernelConfig;
+              };
+
+              # packagesFor overlaid by nixos subflake
               linuxPackages_nezha = self.packagesFor linux_nezha;
             })
           ];

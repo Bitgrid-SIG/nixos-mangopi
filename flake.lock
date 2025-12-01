@@ -41,7 +41,7 @@
         "type": "path"
       },
       "parent": [
-        "kernel",
+        "dist",
         "shared"
       ]
     },
@@ -56,7 +56,7 @@
         "type": "path"
       },
       "parent": [
-        "network",
+        "kernel",
         "shared"
       ]
     },
@@ -71,11 +71,26 @@
         "type": "path"
       },
       "parent": [
-        "nixos",
+        "network",
         "shared"
       ]
     },
     "all-merge_6": {
+      "flake": false,
+      "locked": {
+        "path": "all-merge.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "all-merge.nix",
+        "type": "path"
+      },
+      "parent": [
+        "nixos",
+        "shared"
+      ]
+    },
+    "all-merge_7": {
       "flake": false,
       "locked": {
         "path": "all-merge.nix",
@@ -168,7 +183,7 @@
         "type": "path"
       },
       "parent": [
-        "kernel",
+        "dist",
         "shared"
       ]
     },
@@ -183,7 +198,7 @@
         "type": "path"
       },
       "parent": [
-        "network",
+        "kernel",
         "shared"
       ]
     },
@@ -198,7 +213,7 @@
         "type": "path"
       },
       "parent": [
-        "nixos",
+        "network",
         "shared"
       ]
     },
@@ -213,10 +228,33 @@
         "type": "path"
       },
       "parent": [
+        "nixos",
+        "shared"
+      ]
+    },
+    "checks_7": {
+      "flake": false,
+      "locked": {
+        "path": "checks.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "checks.nix",
+        "type": "path"
+      },
+      "parent": [
         "shared"
       ]
     },
     "dist": {
+      "inputs": {
+        "flake-parts": [
+          "dist",
+          "shared",
+          "flake-parts"
+        ],
+        "shared": "shared_3"
+      },
       "locked": {
         "path": "dist",
         "type": "path"
@@ -268,7 +306,7 @@
         "type": "path"
       },
       "parent": [
-        "kernel",
+        "dist",
         "shared"
       ]
     },
@@ -283,7 +321,7 @@
         "type": "path"
       },
       "parent": [
-        "network",
+        "kernel",
         "shared"
       ]
     },
@@ -298,11 +336,26 @@
         "type": "path"
       },
       "parent": [
-        "nixos",
+        "network",
         "shared"
       ]
     },
     "extra-types_6": {
+      "flake": false,
+      "locked": {
+        "path": "types.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "types.nix",
+        "type": "path"
+      },
+      "parent": [
+        "nixos",
+        "shared"
+      ]
+    },
+    "extra-types_7": {
       "flake": false,
       "locked": {
         "path": "types.nix",
@@ -412,6 +465,22 @@
         "type": "github"
       }
     },
+    "flake-compat_7": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733328505,
+        "narHash": "sha256-NeCCThCEP3eCl2l/+27kNNK7QrwZB1IJCrXfrbv5oqU=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -459,7 +528,7 @@
     "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
-          "kernel",
+          "dist",
           "shared",
           "nixos"
         ]
@@ -481,7 +550,7 @@
     "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": [
-          "network",
+          "kernel",
           "shared",
           "nixos"
         ]
@@ -503,7 +572,7 @@
     "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": [
-          "nixos",
+          "network",
           "shared",
           "nixos"
         ]
@@ -523,6 +592,28 @@
       }
     },
     "flake-parts_6": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixos",
+          "shared",
+          "nixos"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763759067,
+        "narHash": "sha256-LlLt2Jo/gMNYAwOgdRQBrsRoOz7BPRkzvNaI/fzXi2Q=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "2cccadc7357c0ba201788ae99c4dfa90728ef5e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_7": {
       "inputs": {
         "nixpkgs-lib": [
           "shared",
@@ -624,23 +715,23 @@
     "git-hooks-nix_3": {
       "inputs": {
         "flake-compat": [
-          "kernel",
+          "dist",
           "shared",
           "nix"
         ],
         "gitignore": [
-          "kernel",
+          "dist",
           "shared",
           "nix"
         ],
         "nixpkgs": [
-          "kernel",
+          "dist",
           "shared",
           "nix",
           "nixpkgs"
         ],
         "nixpkgs-stable": [
-          "kernel",
+          "dist",
           "shared",
           "nix",
           "nixpkgs"
@@ -663,6 +754,45 @@
     "git-hooks-nix_4": {
       "inputs": {
         "flake-compat": [
+          "kernel",
+          "shared",
+          "nix"
+        ],
+        "gitignore": [
+          "kernel",
+          "shared",
+          "nix"
+        ],
+        "nixpkgs": [
+          "kernel",
+          "shared",
+          "nix",
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "kernel",
+          "shared",
+          "nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734279981,
+        "narHash": "sha256-NdaCraHPp8iYMWzdXAt5Nv6sA3MUzlCiGiR586TCwo0=",
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "rev": "aa9f40c906904ebd83da78e7f328cd8aeaeae785",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "git-hooks-nix_5": {
+      "inputs": {
+        "flake-compat": [
           "network",
           "shared",
           "nix"
@@ -699,7 +829,7 @@
         "type": "github"
       }
     },
-    "git-hooks-nix_5": {
+    "git-hooks-nix_6": {
       "inputs": {
         "flake-compat": [
           "nixos",
@@ -738,7 +868,7 @@
         "type": "github"
       }
     },
-    "git-hooks-nix_6": {
+    "git-hooks-nix_7": {
       "inputs": {
         "flake-compat": [
           "shared",
@@ -784,7 +914,28 @@
       },
       "parent": []
     },
-    "kconfig": {
+    "kernel": {
+      "inputs": {
+        "flake-parts": [
+          "kernel",
+          "shared",
+          "flake-parts"
+        ],
+        "kernelConfig": "kernelConfig",
+        "linux": "linux",
+        "shared": "shared_4"
+      },
+      "locked": {
+        "path": "kernel",
+        "type": "path"
+      },
+      "original": {
+        "path": "kernel",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "kernelConfig": {
       "flake": false,
       "locked": {
         "path": "config.nezha",
@@ -797,27 +948,6 @@
       "parent": [
         "kernel"
       ]
-    },
-    "kernel": {
-      "inputs": {
-        "flake-parts": [
-          "kernel",
-          "shared",
-          "flake-parts"
-        ],
-        "kconfig": "kconfig",
-        "linux": "linux",
-        "shared": "shared_3"
-      },
-      "locked": {
-        "path": "kernel",
-        "type": "path"
-      },
-      "original": {
-        "path": "kernel",
-        "type": "path"
-      },
-      "parent": []
     },
     "linux": {
       "flake": false,
@@ -840,7 +970,7 @@
           "shared",
           "flake-parts"
         ],
-        "shared": "shared_4"
+        "shared": "shared_5"
       },
       "locked": {
         "path": "network",
@@ -920,13 +1050,13 @@
       "inputs": {
         "flake-compat": "flake-compat_3",
         "flake-parts": [
-          "kernel",
+          "dist",
           "shared",
           "flake-parts"
         ],
         "git-hooks-nix": "git-hooks-nix_3",
         "nixpkgs": [
-          "kernel",
+          "dist",
           "shared",
           "nixos"
         ],
@@ -952,13 +1082,13 @@
       "inputs": {
         "flake-compat": "flake-compat_4",
         "flake-parts": [
-          "network",
+          "kernel",
           "shared",
           "flake-parts"
         ],
         "git-hooks-nix": "git-hooks-nix_4",
         "nixpkgs": [
-          "network",
+          "kernel",
           "shared",
           "nixos"
         ],
@@ -984,13 +1114,13 @@
       "inputs": {
         "flake-compat": "flake-compat_5",
         "flake-parts": [
-          "nixos",
+          "network",
           "shared",
           "flake-parts"
         ],
         "git-hooks-nix": "git-hooks-nix_5",
         "nixpkgs": [
-          "nixos",
+          "network",
           "shared",
           "nixos"
         ],
@@ -1016,16 +1146,48 @@
       "inputs": {
         "flake-compat": "flake-compat_6",
         "flake-parts": [
+          "nixos",
           "shared",
           "flake-parts"
         ],
         "git-hooks-nix": "git-hooks-nix_6",
         "nixpkgs": [
+          "nixos",
           "shared",
           "nixos"
         ],
         "nixpkgs-23-11": "nixpkgs-23-11_6",
         "nixpkgs-regression": "nixpkgs-regression_6"
+      },
+      "locked": {
+        "lastModified": 1762807651,
+        "narHash": "sha256-8QYnRyGOTm3h/Dp8I6HCmQzlO7C009Odqyp28pTWgcY=",
+        "owner": "NixOS",
+        "repo": "nix",
+        "rev": "d7fc293353fce6cf4b785d23e6f7e73914f01283",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "2.32.4",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
+    "nix_7": {
+      "inputs": {
+        "flake-compat": "flake-compat_7",
+        "flake-parts": [
+          "shared",
+          "flake-parts"
+        ],
+        "git-hooks-nix": "git-hooks-nix_7",
+        "nixpkgs": [
+          "shared",
+          "nixos"
+        ],
+        "nixpkgs-23-11": "nixpkgs-23-11_7",
+        "nixpkgs-regression": "nixpkgs-regression_7"
       },
       "locked": {
         "lastModified": 1762807651,
@@ -1132,6 +1294,21 @@
         "type": "github"
       }
     },
+    "nixlib_7": {
+      "locked": {
+        "lastModified": 1764465291,
+        "narHash": "sha256-jJ/E4B9Hp7U2ZmT3E0tD1LtAfATw/xjVf8sueNyeYmc=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "e9537535ae8f4a2f78dbef0aaa0cbb6af4abd047",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
     "nixos": {
       "locked": {
         "lastModified": 1764316264,
@@ -1197,33 +1374,6 @@
       }
     },
     "nixos_5": {
-      "inputs": {
-        "flake-parts": [
-          "nixos",
-          "shared",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixos",
-          "shared",
-          "nixos"
-        ],
-        "overlay": "overlay",
-        "rtl8723ds": "rtl8723ds",
-        "shared": "shared_5",
-        "spl": "spl"
-      },
-      "locked": {
-        "path": "nixos",
-        "type": "path"
-      },
-      "original": {
-        "path": "nixos",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "nixos_6": {
       "locked": {
         "lastModified": 1764316264,
         "narHash": "sha256-82L+EJU+40+FIdeG4gmUlOF1jeSwlf2AwMarrpdHF6o=",
@@ -1239,7 +1389,49 @@
         "type": "github"
       }
     },
+    "nixos_6": {
+      "inputs": {
+        "flake-parts": [
+          "nixos",
+          "shared",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixos",
+          "shared",
+          "nixos"
+        ],
+        "rtl8723ds": "rtl8723ds",
+        "shared": "shared_6",
+        "spl": "spl"
+      },
+      "locked": {
+        "path": "nixos",
+        "type": "path"
+      },
+      "original": {
+        "path": "nixos",
+        "type": "path"
+      },
+      "parent": []
+    },
     "nixos_7": {
+      "locked": {
+        "lastModified": 1764316264,
+        "narHash": "sha256-82L+EJU+40+FIdeG4gmUlOF1jeSwlf2AwMarrpdHF6o=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9a7b80b6f82a71ea04270d7ba11b48855681c4b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixos_8": {
       "locked": {
         "lastModified": 1764316264,
         "narHash": "sha256-82L+EJU+40+FIdeG4gmUlOF1jeSwlf2AwMarrpdHF6o=",
@@ -1351,6 +1543,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-23-11_7": {
+      "locked": {
+        "lastModified": 1717159533,
+        "narHash": "sha256-oamiKNfr2MS6yH64rUn99mIZjc45nGJlj9eGth/3Xuw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a62e6edd6d5e1fa0329b8653c801147986f8d446",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a62e6edd6d5e1fa0329b8653c801147986f8d446",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -1447,19 +1655,21 @@
         "type": "github"
       }
     },
-    "overlay": {
-      "flake": false,
+    "nixpkgs-regression_7": {
       "locked": {
-        "path": "overlay.nix",
-        "type": "path"
+        "lastModified": 1643052045,
+        "narHash": "sha256-uGJ0VXIhWKGXxkeNnq4TvV3CIOkUJ3PAoLZ3HMzNVMw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
+        "type": "github"
       },
       "original": {
-        "path": "overlay.nix",
-        "type": "path"
-      },
-      "parent": [
-        "nixos"
-      ]
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
+        "type": "github"
+      }
     },
     "peripherals": {
       "locked": {
@@ -1495,7 +1705,7 @@
         "hardware": "hardware",
         "kernel": "kernel",
         "network": "network",
-        "nixos": "nixos_5",
+        "nixos": "nixos_6",
         "nixpkgs": [
           "shared",
           "nixos"
@@ -1503,7 +1713,7 @@
         "peripherals": "peripherals",
         "profiles": "profiles",
         "services": "services",
-        "shared": "shared_6"
+        "shared": "shared_7"
       }
     },
     "rtl8723ds": {
@@ -1595,6 +1805,33 @@
         "nixlib": "nixlib_3",
         "nixos": "nixos_3",
         "nixpkgs": [
+          "dist",
+          "shared",
+          "nixos"
+        ]
+      },
+      "locked": {
+        "path": "../shared-inputs",
+        "type": "path"
+      },
+      "original": {
+        "path": "../shared-inputs",
+        "type": "path"
+      },
+      "parent": [
+        "dist"
+      ]
+    },
+    "shared_4": {
+      "inputs": {
+        "all-merge": "all-merge_4",
+        "checks": "checks_4",
+        "extra-types": "extra-types_4",
+        "flake-parts": "flake-parts_4",
+        "nix": "nix_4",
+        "nixlib": "nixlib_4",
+        "nixos": "nixos_4",
+        "nixpkgs": [
           "kernel",
           "shared",
           "nixos"
@@ -1612,15 +1849,15 @@
         "kernel"
       ]
     },
-    "shared_4": {
+    "shared_5": {
       "inputs": {
-        "all-merge": "all-merge_4",
-        "checks": "checks_4",
-        "extra-types": "extra-types_4",
-        "flake-parts": "flake-parts_4",
-        "nix": "nix_4",
-        "nixlib": "nixlib_4",
-        "nixos": "nixos_4",
+        "all-merge": "all-merge_5",
+        "checks": "checks_5",
+        "extra-types": "extra-types_5",
+        "flake-parts": "flake-parts_5",
+        "nix": "nix_5",
+        "nixlib": "nixlib_5",
+        "nixos": "nixos_5",
         "nixpkgs": [
           "network",
           "shared",
@@ -1639,15 +1876,15 @@
         "network"
       ]
     },
-    "shared_5": {
+    "shared_6": {
       "inputs": {
-        "all-merge": "all-merge_5",
-        "checks": "checks_5",
-        "extra-types": "extra-types_5",
-        "flake-parts": "flake-parts_5",
-        "nix": "nix_5",
-        "nixlib": "nixlib_5",
-        "nixos": "nixos_6",
+        "all-merge": "all-merge_6",
+        "checks": "checks_6",
+        "extra-types": "extra-types_6",
+        "flake-parts": "flake-parts_6",
+        "nix": "nix_6",
+        "nixlib": "nixlib_6",
+        "nixos": "nixos_7",
         "nixpkgs": [
           "nixos",
           "shared",
@@ -1666,15 +1903,15 @@
         "nixos"
       ]
     },
-    "shared_6": {
+    "shared_7": {
       "inputs": {
-        "all-merge": "all-merge_6",
-        "checks": "checks_6",
-        "extra-types": "extra-types_6",
-        "flake-parts": "flake-parts_6",
-        "nix": "nix_6",
-        "nixlib": "nixlib_6",
-        "nixos": "nixos_7",
+        "all-merge": "all-merge_7",
+        "checks": "checks_7",
+        "extra-types": "extra-types_7",
+        "flake-parts": "flake-parts_7",
+        "nix": "nix_7",
+        "nixlib": "nixlib_7",
+        "nixos": "nixos_8",
         "nixpkgs": [
           "shared",
           "nixos"

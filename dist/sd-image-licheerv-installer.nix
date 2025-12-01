@@ -1,6 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
-{
+{ modulesPath, ... }: {
   imports = [
     ./sd-image-licheerv.nix
     "${modulesPath}/profiles/base.nix"
